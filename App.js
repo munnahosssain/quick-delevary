@@ -1,15 +1,22 @@
-import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, View, Image } from 'react-native';
-import { colors } from './src/theme/colors';
-import OrderPage from './src/screens/OrderPage';
 import Home from './src/screens/Home';
+import Details from './src/screens/Details';
+import { StatusBar } from 'expo-status-bar';
+import { StyleSheet, DarkTheme } from 'react-native';
+import { colors } from './src/theme/colors';
+import { NavigationContainer } from '@react-navigation/native';
+import { createNativeStackNavigator } from '@react-navigation/native-stack';
+
+const Stack = createNativeStackNavigator();
 
 export default function App() {
   return (
-    <View>
-      <Home />
+    <NavigationContainer>
+      <Stack.Navigator screenOptions={{headerShown:false}}>
+        <Stack.Screen name="Home" component={Home} />
+        <Stack.Screen name="Details" component={Details} />
+      </Stack.Navigator>
       <StatusBar style="light" />
-    </View>
+    </NavigationContainer>
   );
 }
 

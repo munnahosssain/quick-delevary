@@ -3,8 +3,10 @@ import Text from '../Components/text/text';
 import { spacing } from '../theme/spacing';
 import { colors } from '../theme/colors';
 import { View, StyleSheet, Image, Pressable, Button } from 'react-native';
+import { useNavigation } from '@react-navigation/native';
 
 export default function OrderPage() {
+    const navigation = useNavigation();
     return (
         <View style={styles.orderItem}>
             <Image
@@ -17,7 +19,10 @@ export default function OrderPage() {
             <Text style={{ color: colors.black, textAlign: 'center', paddingHorizontal: spacing[4], marginTop: spacing[4] }}>
                 When placing an order, select the option “Contactless delivery” and the courier will leave your order at the door.
             </Text>
-            <Pressable style={styles.button}>
+            <Pressable
+                style={styles.button}
+                onPress={() => navigation.navigate('Details')}
+            >
                 <Text style={{ textTransform: 'uppercase', }}>
                     Order Now
                 </Text>
@@ -41,7 +46,7 @@ const styles = StyleSheet.create({
         borderTopLeftRadius: 25,
         borderTopRightRadius: 25,
     },
-    
+
     imgWrap: {
         margin: spacing[5],
     },
